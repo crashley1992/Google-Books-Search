@@ -1,0 +1,11 @@
+.jumboron {
+    background-image: url('books.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+}
+.display-4 {
+    text-align: center;
+    color: whitesmoke;
+    font-weight: bold;
+}
