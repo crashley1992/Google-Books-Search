@@ -2,11 +2,14 @@ import React from 'react';
 import './jumbotron.css'
 import SearchForm from '../SearchForm/SearchForm';
 
-const Jumbotron = () => {
+const Jumbotron = (props) => {
     return(
         <div className="jumboron">
             <h1 className="display-4">Google Book Search</h1>
-            <SearchForm />
+            <SearchForm 
+                handleInput={props.handleInput}
+                searchGoogleBooks={props.searchGoogleBooks}
+            />
         </div>
     );
 }

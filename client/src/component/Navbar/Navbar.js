@@ -8,14 +8,14 @@ const NavTabs = () => {
             Google Books
         </Link>
         <div>
-            {/* <ul className="navbar-nav">
+            <ul className="navbar-nav">
                 <li className="nav-item">
-                    <Link to="/" className={
-                        window.location.pathname === "/" || window.location.pathname === "/search" ? "nav-link active" : "nav-link"
-                    }>
+                    <Link to="/search" className={
+                        window.location.pathname === "/search" || window.location.pathname === "/search" ? "nav-link active" : "nav-link"
+                    }>Search
                     </Link>
                 </li>
-            </ul> */}
+            </ul>
         </div>   
     </nav>
     );

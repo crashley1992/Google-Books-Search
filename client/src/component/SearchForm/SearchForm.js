@@ -5,15 +5,16 @@ const SearchForm = (props) => {
     return(
         <form className="search">
             <div className="form-group">
-            <label htmlFor="book"></label>
+            <label htmlFor="book">Nook</label>
                 <input className="form-control" placeholder="Book Search" value={props.search}
-                onChange={props.handleInputChange}
-                name="book"
-                list="books"
-                type="text"
-                id="book"
+                onChange={props.handleInput}
                 ></input>
-                <button className="btn btn-info" type="submit">Search</button>
+                 {/* <datalist id="books">
+                    {props.books.map(books => (
+                        <option value={book} key={book} />
+                    ))}
+                    </datalist> */}
+                <button className="btn btn-info" onClick={(event) => props.searchGoogleBooks(event)} type="submit">Search</button>
             </div>
         </form>
     )
