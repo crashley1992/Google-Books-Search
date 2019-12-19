@@ -1,48 +1,15 @@
 import React, { Component } from "react";
-import axios from "axios";
 import AddBookButton from "../component/AddBookButton/AddBookButton";
 import BookResult from  '../component/BookResult/BookResult';
-import BookItems from  '../component/BookResult/BookResult';
 import NoBooksDisplay from "../component/NoBooksDisplay/NoBooksDisplay";
-import { Row, Col } from "../component/Grid/Grid";
+import { Container, Row, Col } from "../component/Grid/Grid";
 
 class Search extends Component {
-//   state = {
-//     search: "",
-//     books: [],
-//     results: [],
-//   };
-
-//   resultsDisplay = data => {
-//       this.setState({ books: data.items });
-//   };
-
-//   searchGoogleBooks = () => {
-//       let urlQuery = `https://www.googleapis.com/books/v1/volumes?q=${
-//         this.state.query}`
-
-//     axios
-//         .get(urlQuery)
-//         .then( response => {
-//             console.log(response);
-//             this.resultsDisplay(response.data);
-//         })
-//         .catch( error => {
-//             console.log(error)
-//         })
-//     };
-
-//   handleInput = event => {
-//       const { name, value } = event.target;
-//       this.setState({
-//           [name]: value
-//       });
-//       console.log(`query test ${this.state.query}`);
-//   }
 
   render() {
       console.log(`search props: `, this.props);
     return (
+      <Container>
         <Row>
           <Col size="md-12">
           <div>
@@ -80,6 +47,7 @@ class Search extends Component {
           </div>
           </Col>
         </Row>
+        </Container>
       );
     }
   }

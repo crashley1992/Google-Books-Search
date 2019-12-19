@@ -1,11 +1,12 @@
 import React from "react";
 import Button from "../Button/Button";
 import axios from "axios";
+import './addbookbutton.css'
 
 class AddBookButton extends React.Component{
  
     postToDB = (book) => {
-        var dbBook = {
+        var dbBooks = {
           title: book.title,
           authors: book.authors,
           synopsis: book.synopsis,
@@ -13,8 +14,8 @@ class AddBookButton extends React.Component{
           link: book.link
         }
     
-        axios.post("/api/books", dbBook)
-        .then( () => console.log(`You added ${book.title} to your bookshelf`))
+        axios.post("/api/books", dbBooks)
+        .then( () => console.log(book.authors + "was added "))
         .catch(err => console.log(err))
       }
 

@@ -3,6 +3,7 @@ import { Container} from "../Grid/Grid";
 import { Col } from "../Grid/Grid";
 import { Row } from "../Grid/Grid";
 import Thumbnail from "../Thumbnail/Thumbnail";
+import './book-result.css';
 
 const BookResult = (props) => {
     return(

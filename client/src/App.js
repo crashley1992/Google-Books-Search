@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Jumbotron from './component/Jumbotron/Jumbotron';
 import NavTabs from './component/Navbar/Navbar';
-import Wrapper from './component/Wrapper/Wrapper';
 import Search from './pages/Search';
 import axios from 'axios';
 import './App.css';
@@ -20,8 +19,9 @@ class App extends Component {
 
   searchGoogleBooks = (event) => {
     event.preventDefault()
-      let urlQuery = `https://www.googleapis.com/books/v1/volumes?q=${
-        this.state.query}`
+      let urlQuery = `https://www.googleapis.com/books/v1/volumes?q=${this.state.search}`
+
+      console.log(`query test ${this.state.search}`);
 
     axios
         .get(urlQuery)
@@ -35,11 +35,8 @@ class App extends Component {
     };
 
   handleInput = event => {
-      const { name, value } = event.target;
-      this.setState({
-          [name]: value
-      });
-      console.log(`query test ${this.state.query}`);
+    this.setState({ search: event.target.value });
+
   }
 
   render() {
