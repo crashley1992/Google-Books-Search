@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Jumbotron from './component/Jumbotron/Jumbotron';
 import NavTabs from './component/Navbar/Navbar';
 import Search from './pages/Search';
+import Saved from './pages/Saved'
 import axios from 'axios';
 import './App.css';
 
@@ -44,9 +45,10 @@ class App extends Component {
     <div className="App">
     <Router>
       <NavTabs />
-        <Switch>
         <Route exact path="/search" render={() => <Search books={this.state.books}/>} />
-        </Switch>
+        <Route path="/books" component={Saved} />
+        <Route exact path="/books/:id" component={null} />
+        <Route component={null} />
     </Router>
     <Jumbotron 
       handleInput={this.handleInput}

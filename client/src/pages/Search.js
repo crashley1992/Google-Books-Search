@@ -29,13 +29,14 @@ class Search extends Component {
                 />
   
                 <AddBookButton
+                key={book.id} 
                 authors={book.volumeInfo.authors ? book.volumeInfo.authors : ["No Author Available"]}
                 title={book.volumeInfo.title}
                 synopsis={book.volumeInfo.description ? 
-                  book.volumeInfo.description : "No Description Available"}
+                book.volumeInfo.description : "No Description Available"}
                 link={book.volumeInfo.infoLink}
                 thumbnail={book.volumeInfo.imageLinks.thumbnail ? 
-                  book.volumeInfo.imageLinks.thumbnail : "#"}
+                book.volumeInfo.imageLinks.thumbnail : "#"}
                 />
                 </div>
               )

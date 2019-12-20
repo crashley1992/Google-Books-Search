@@ -7,7 +7,7 @@ const router = express.Router();
  const db = require('../models');
 
 router.get("/api/books", (req, res) => {
-//queries for articles in mongo and sorts by most recent 
+//queries for book in mongo and sorts by most recent 
   db.Books.find().sort({timestamp: -1})
     .then((dbBooks) => {
       res.json(dbBooks);
@@ -18,9 +18,19 @@ router.get("/api/books", (req, res) => {
 });
 
 router.post("/api/books", (req, res) => {
-  res.json({ posted: true });
-});
-// Route for grabbing a specific Article by id
+  console.log(req.body);
+  db.Books.create(req.body)
+    .then((dbBooks) => {
+      return db.Books.findByIdAndUpdate({ _id: books.id }, {title: book.title}, { synopsis: book.synopsis }, { new: true });
+    })
+    .then((dbBooks) => {
+      res.json(dbBooks);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+  });
+// Route for grabbing a specific book by id
 router.get("/api/books/:id", (req, res) => {
   db.Books.findById({ _id: req.params.id })
     .populate("saved")
@@ -32,11 +42,11 @@ router.get("/api/books/:id", (req, res) => {
     });
 });
   
-    router.put("/articles/:id", (req, res) => {
+    router.put("/api/books/:id", (req, res) => {
       console.log(req.body);
       db.Books.remove(req.body)
         .then((dbBooks) => {
-          return db.Article.findByIdAndUpdate({ _id: req.params.id }, { new: true });
+          return db.dbBooks.findByIdAndUpdate({ _id: books.id }, { new: true });
         })
         .then((dbBooks) => {
           res.json(dbBooks);
@@ -45,5 +55,5 @@ router.get("/api/books/:id", (req, res) => {
           res.json(err);
         });
     });
-    
+  
 module.exports = router;
