@@ -32,7 +32,7 @@ router.post("/api/books", (req, res) => {
   });
 // Route for grabbing a specific book by id
 router.get("/api/books/:id", (req, res) => {
-  db.Books.findById({ _id: req.params.id })
+  db.Books.findById({ _id: req.params.id }, {title: book.title}, { synopsis: book.synopsis }, { new: true })
     .populate("saved")
     .then((dbBooks) => {
       res.json(dbBooks);
@@ -46,7 +46,7 @@ router.get("/api/books/:id", (req, res) => {
       console.log(req.body);
       db.Books.remove(req.body)
         .then((dbBooks) => {
-          return db.dbBooks.findByIdAndUpdate({ _id: books.id }, { new: true });
+          return db.dbBooks.findByIdAndUpdate({ _id: books.id }, { new: false });
         })
         .then((dbBooks) => {
           res.json(dbBooks);
