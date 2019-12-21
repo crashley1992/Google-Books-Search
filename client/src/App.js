@@ -46,7 +46,7 @@ class App extends Component {
     <Router>
       <NavTabs />
         <Route exact path="/search" render={() => <Search books={this.state.books}/>} />
-        <Route path="/books" component={Saved} />
+        <Route path="/books" render={() => <Saved savedBooks={this.state.savedBooks}/>} />
         <Route exact path="/books/:id" component={null} />
         <Route component={null} />
     </Router>

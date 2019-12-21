@@ -37,28 +37,26 @@ class Saved extends Component {
     render() {
         return (
          <div>
-             {this.state.savedBooks.length > 0 ?
-              <BookResult>
-                {this.state.savedBooks.map(book => {
-                  console.log(book)
+                {(this.props.savedBooks && this.props.savedBooks.length > 0) ? 
+            this.props.books.map(savedBooks => {
+                  console.log(savedBooks)
               return (
                 <div>
                 <BookResult
-                    key={book._id}
-                    authors={book.authors}
-                    title={book.title}
-                    synopsis={book.synopsis}
-                    link={book.link}
-                    thumbnail={book.thumbnail}
+                    key={savedBooks._id}
+                    authors={savedBooks.authors}
+                    title={savedBooks.title}
+                    synopsis={savedBooks.synopsis}
+                    link={savedBooks.link}
+                    thumbnail={savedBooks.thumbnail}
                       // delete={()=> this.deleteFromDB(book._id)}
                       />
                           <RemoveBookBtn
-                            onClick={() => this.deleteFromDB(book._id)}
+                            onClick={() => this.deleteFromDB(savedBooks._id)}
                           />
                          </div>
               )
-            })}
-            </BookResult>
+            })
             :
             <NoBooksDisplay/>         
         }    
