@@ -2,6 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const mongoose = require('mongoose');
 const logger = require("morgan");
+const path = require('path');
+
 require('dotenv').config()
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,6 +20,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+app.get('*', (request, response) => {
+	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 // Connect to the Mongo DB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/GoogleBooks";
